@@ -6,7 +6,8 @@
     "description": "در تکاپوی پردازش جرعه‌ای از این جام پُر داده"
   },
   "plugins": [
-    "./plugins/paginator.coffee"
+    "./plugins/paginator.coffee",
+    "wintersmith-livereload"
   ],
   "require": {
     "moment": "moment",
