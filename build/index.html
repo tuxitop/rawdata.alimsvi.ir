@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <title>داده‌های خام
+    </title>
+    <link rel="alternate" href="http://localhost:8080/feed.xml" type="application/rss+xml" title="در تکاپوی پردازش جرعه‌ای از این جام پُر داده">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body>
+    <header class="header">
+      <div class="content-wrap">
+        <div class="logo">
+          <h1><a href="http://localhost:8080">داده‌های خام</a></h1>
+          <p class="description">در تکاپوی پردازش جرعه‌ای از این جام پُر داده</p>
+        </div>
+      </div>
+    </header>
+    <div id="content">
+      <div class="content-wrap">
+        <article class="article intro">
+          <header>
+            <p class="date"><span>12. June 2015</span></p>
+            <h2><a href="/articles/ehtemal-dar-python/">بررسی نظریه احتمالات در پایتون</a></h2>
+          </header>
+          <section class="content"><p>بازی‌هایی که در اون‌ها از تاس استفاده می‌شه معمولا تا حد زیادی به شانس
+بستگی داره. افراد مختلف تعاریف مختلفی از شانس دارن، عده‌ای سعی می‌کنن که
+با تمرکز روی یک عدد یا دعا کردن شانس خودشون رو برای ریختن تاس مناسب
+افزایش بدن و عده‌ای هم به روش‌های مختلف دست به تقلب می‌زنن. اما ریاضیات
+تعریف متفاوتی از شانس داره. ریاضیات، شانس رو «اندازه‌ی احتمالِ وقوعِ یک
+رویداد» تعریف می‌کنه که با یک عدد بین ۰ و ۱ نمایش داده می‌شه و همون‌طور
+که می‌دونین در مبحث
+<a href="http://fa.wikipedia.org/wiki/%D8%A7%D8%AD%D8%AA%D9%85%D8%A7%D9%84%D8%A7%D8%AA">احتمالات</a>
+بررسیش&nbsp;می‌کنه.</p>
+<p>از اونجا که ایده‌ی تاس اینه که ما به یک روشی یک عدد تصادفی بین ۱ تا ۶
+انتخاب کنیم، من این کار رو به راحتی با استفاده از ماژول random در پایتون
+شبیه‌سازی می‌کنم تا بتونم بعدا بررسیش&nbsp;کنم:</p>
+<p>بر اساس چیزی که ریاضیات می‌گه، فرض کنید ما یک تاس عادلانه‌ی ۶ وجهی داشته
+باشیم که روی هر وجه اون یکی از اعداد بازه‌‌ی از ۱ تا ۶ نوشته شده باشه.
+هر عددی رو که در این بازه در نظر بگیریم و تاس رو بریزیم، احتمال این که
+عدد مورد نظر ما بیاد $\frac{1}{6}$&nbsp;است.</p>
+<p>یک روش امتحان کردن این مساله می‌تونه به این صورت باشه که ما بارها تاس
+مورد نظرمون رو بریزیم و انتظار داشته باشیم که میانگین دفعاتی که تاس مورد
+نظرمون ریخته شده نزدیک به $\frac{1}{6}$ باشه. و این یعنی اگر میانگین رو
+M در نظر بگیریم، اختلاف M با عدد $\frac{1}{6}$ باید نزدیک به صفر&nbsp;باشه.</p>
+<p>از اونجایی که من حوصله ندارم یک تاس رو «بارها» بریزم و نتیجه‌ها رو
+یادداشت کنم و در آخر میانگین مورد نظرم رو بررسی کنم، چند خط کد پایتون
+می‌نویسم و این مساله رو با یک نمودار بررسی&nbsp;می‌کنم:</p>
+<p>نموداری که با اجرای این کد نمایش داده می‌شه مشخص می‌کنه که هر چه تاس
+بیشتری ریخته شده اختلاف میانگین با $\frac{1}{6}$ بیشتر به صفر نزدیک&nbsp;شده:</p>
+<p>برای این که مفهوم‌تر بشه، قضیه رو یک جور دیگه امتحان می‌کنیم. فرض کنید
+تاس رو ۳۰۰۰ بار بریزیم، با توجه به این که $\frac{1}{6}*3000=500$ ،
+می‌تونیم انتظار داشته باشیم که هر یک از اعداد روی تاس حدوداً ۵۰۰ بار
+ریخته بشن. بنابراین می‌تونیم چند خط کد دیگه بنویسم که ۳۰۰۰ بار تابع ما
+رو اجرا کنه، اعدادی رو که ریخته می‌شن بشمره و در نهایت نتیجه رو در یک
+نمودار دیگه بررسی&nbsp;کنیم:</p>
+<p>نمودار به دست اومده این مساله رو تایید&nbsp;می‌کنه:</p>
+<h1 id="-">نتیجه‌</h1>
+<p>این نتایج نشون می‌ده که در مقیاس بزرگ‌تر و زمانی که تعداد دفعات انجام یک
+فرایند تصادفی زیاد بشه، نتیجه‌ی به دست اومده خیلی شانسی نیست. یعنی هر چه
+تعداد دفعات ریختن تاس ما به بی‌نهایت میل کنه، نتیجه‌ی به دست آمده
+مشخص‌تر می‌شه. این مساله رو به خیلی چیزها می‌شه بسط داد و استفاده‌های
+زیادی در علوم مختلف داره، که تفسیرش با شما و علم مورد&nbsp;نظرتون.</p>
+<h1 id="-">ویرایش</h1>
+<p><a href="http://ataeyan.com/">مهدی</a> توی فیس‌بوک برای من&nbsp;نوشته:</p>
+<blockquote>
+<p>یک نکته توی کامپیوتر چیزی به نام تولید اعداد صد درصد تصادفی نداریم.
+یعنی تو اگه یک سیستم بسته داشته باشی (مثل همین کامپیوترت) اعدادی که
+تصادفی تولید میشه در حقیقت تصادفی نیستند! و اگه آزمایشت رو بی‌نهایت
+تکرار کنی میتونی این تصادفی نبودن رو کشف کنی. راه‌حلش هم استفاده از
+سرویس‌هایی مثل <a href="http://random.org">random.org</a> اه که اونها هم روشهای
+خاص خودشون رو دارن برای تولید اعداد رندوم (مثلا از امواج کیهانی
+استفاده&nbsp;می‌کنن)</p>
+</blockquote>
+<p>برای امتحان حرف مهدی، من کد توابع رو توی پست عوض کردم و همین‌طور که
+می‌بینید به تابع roll_die یک آرگومان جدید اضافه کردم که در صورت استفاده
+ازش، با استفاده از ماژول
+<a href="https://pypi.python.org/pypi/randomdotorg/">randomdotorg</a> از طریق
+وبسایت مذکور اعداد تصادفی واقعی به دست بیاد و این رو در تابع
+plot_fairness_bar اعمال کردم و با خط زیر امتحانش&nbsp;کردم:</p>
+<p>طبیعتا مدت زیادی طول کشید تا ۳۰۰۰ عدد تصادفی از طریق وبسایت random.org
+تولید بشه و با سرعت و کیفیت بالای اینترنت اینجا، به دست من برسه. ولی
+نتیجه‌ی نهایی نمودار زیر&nbsp;شد:</p>
+<p>همون‌طور که می‌بینید تفاوت آن‌چنانی با الگوریتم ماژول random پایتون وجود
+نداره و من فکر می‌کنم در مواردی که ما لازم داریم می‌شه با خیال راحت از
+روش سریع‌تر پایتون استفاده&nbsp;کرد.</p>
+
+          </section>
+        </article>
+        <article class="article intro">
+          <header>
+            <p class="date"><span>30. April 2013</span></p>
+            <h2><a href="/articles/hello-world/">README</a></h2>
+          </header>
+          <section class="content"><p>Welcome to your new blog! This is the default blog template with <span class="caps">RSS</span>, pagination and an archive. There are other templates available – run <code>wintersmith new --help</code> to list&nbsp;them.</p>
+
+            <p class="more"><a href="/articles/hello-world/">more</a></p>
+          </section>
+        </article>
+        <article class="article intro">
+          <header>
+            <p class="date"><span>01. April 2013</span></p>
+            <h2><a href="/articles/red-herring/">A red herring</a></h2>
+          </header>
+          <section class="content"><p>A long time ago, when the world was young – someone put some food on their tongue.
+They tasted the food, and thought it was nice. Most fruit liked it – but banana’s thought&nbsp;twice.</p>
+<p>
+            <p class="more"><a href="/articles/red-herring/">more</a></p>
+          </section>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="content-wrap">
+        <div class="nav"><a href="/archive.html">&laquo; Archives</a><a href="/page/2/">Next page &raquo;</a>
+        </div>
+        <section class="about"><p>Wintersmith is made by <a href="http://johan-nordberg.com">Johan Nordberg</a> and licensed under the <a href="http://opensource.org/licenses/MIT">MIT-license</a>.
+This footer text can be edited in about.md</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat.</p>
+<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+dolore eu fugiat nulla pariatur.</p>
+<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+deserunt mollit anim id est laborum.</p>
+
+        </section>
+        <section class="copy">
+          <p>&copy; 2017 Ali Mousavi &mdash; powered by&nbsp;<a href="https://github.com/jnordberg/wintersmith">Wintersmith</a>
+          </p>
+        </section>
+      </div>
+    </footer>
+  </body>
+</html>
