@@ -1,6 +1,14 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to the header of the site/application.
 // -----------------------------------------------------------------------------
+
+.body-container {
+    background-color: #fff;
+    margin-top: -44px;
+    border-radius: 0 0 5px 5px;
+    padding-bottom: 20px;
+}
+
 .article {
     margin: 20px 0;
 

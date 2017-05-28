@@ -39,7 +39,7 @@ html(lang="en")
                                         each item in locals.socialMedia
                                             span
                                                 a(class='fa ' + item.icon href=item.href)
-                            ul.nav.navbar-nav.navbar-right
+                            ul.nav.navbar-nav.navbar-right.menu
                                 each href, name in locals.navbar
                                     li(class=( (activePath == href) ? 'active' : ''))
                                         a(href=href)= name

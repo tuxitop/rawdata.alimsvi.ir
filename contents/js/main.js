@@ -5,9 +5,11 @@ $(document).ready(function() {
         var topDistNav = $(".navbar").position();
         var topDistTitle = $(".page-header").position();
         if (scroll > topDistNav.top) {
-            $('nav').css({"position": "fixed", "top": 0});
+            $('nav').css({"position": "fixed", "top": 0, "margin-top": 0});
+            $('nav .container').css({"border-radius": 0});
         } else {
-            $('nav').css({"position": "relative", "top": "auto"});
+            $('nav').css({"position": "relative", "top": "auto", "margin-top": -25});
+            $('nav .container').css({"border-radius": "5px 5px 0 0"});
             $('#website-title').css({"font-size": "36px"}, 1000)
         }
         if (scroll > topDistTitle.top) {
