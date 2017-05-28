@@ -5,6 +5,7 @@
     "owner": "Ali Mousavi",
     "description": "در تکاپوی پردازش جرعه‌ای از این جام پُر داده",
     "disqusID": "alimsvi",
+    "environment": "development",
     "socialMedia" : [
         {
             "name": "github",

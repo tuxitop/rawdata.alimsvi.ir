@@ -11,7 +11,8 @@ const compass = require('gulp-compass');
 const cleanCSS = require('gulp-clean-css');
 const refresh = require('gulp-livereload');
 const runWintersmith = require('run-wintersmith');
-const ghPages = require('gulp-gh-pages')
+const ghPages = require('gulp-gh-pages');
+const extend = require('gulp-extend');
 
 // other
 const del = require('del');
@@ -29,13 +30,14 @@ const dirs = {
 // cleans the build dir
 gulp.task('clean', () => {
     return del([
-        dirs.build
+        dirs.build,
+        dirs.content + "css/main.css"
     ]);
 });
 
 // compile sass files
 gulp.task('compass', () => {
-    gulp.src(dirs.contents + '/sass/*.scss')
+    gulp.src(dirs.contents + '/sass/**/*.scss')
         .pipe(compass({
             project: path.join(__dirname, dirs.contents),
             css: 'css',
@@ -51,10 +53,21 @@ gulp.task('minify-css', () => {
         .pipe(gulp.dest(dirs.contents + "/css"));
 });
 
+gulp.task('create-production-config', function() {
+    gutil.log('Creating production config');
+    gulp.src(['./config.json', './config.production.base.json'])
+        .pipe(extend('config.production.json', true))
+        .pipe(gulp.dest('./'));
+
+    gutil.log('Setting production config for Wintersmith\'s use');
+   runWintersmith.settings.configFile = 'config.production.json';
+
+});
+
 // Main Tasks
 
 // Build task
-gulp.task('build', ['clean', 'compass', 'minify-css'], function(cb) {
+gulp.task('build', ['clean', 'compass', 'minify-css', 'create-production-config'], function(cb) {
     // Tell Wintersmith to build
     runWintersmith.build(function(){
         // Log on successful build

@@ -61,5 +61,7 @@ typings/
 # dotenv environment variables file
 .env
 
-# wintersmith build directory
+# wintersmith
 build/
+.publish/
+config.production.json

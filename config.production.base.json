@@ -1,0 +1,7 @@
+{
+  "output": "./build",
+  "locals": {
+    "url": "http://alimsvi.ir",
+    "environment": "production"
+  }
+}
