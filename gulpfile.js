@@ -86,7 +86,7 @@ gulp.task('preview', ['compass'], function() {
 
 // deploy task
 gulp.task ('deploy', ['build'], function() {
-    return gulp.src('./' + dirs.build + '/**/*')
+    return gulp.src(['./' + dirs.build + '/**/*', './CNAME'])
         .pipe(ghPages());
 });
 
