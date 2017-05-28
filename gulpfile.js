@@ -11,6 +11,7 @@ const compass = require('gulp-compass');
 const cleanCSS = require('gulp-clean-css');
 const refresh = require('gulp-livereload');
 const runWintersmith = require('run-wintersmith');
+const ghPages = require('gulp-gh-pages')
 
 // other
 const del = require('del');
@@ -68,6 +69,12 @@ gulp.task('build', ['clean', 'compass', 'minify-css'], function(cb) {
 gulp.task('preview', ['compass'], function() {
     // Tell Wintersmith to run in preview mode
     runWintersmith.preview();
+});
+
+// deploy task
+gulp.task ('deploy', ['build'], function() {
+    return gulp.src('./' + dirs.build + '/**/*')
+        .pipe(ghPages());
 });
 
 // Watch task
