@@ -25,6 +25,7 @@ $(document).ready(function() {
                 $.ajax({ type: "GET", url: nextHref, async: false,
                     success : function(text){
                         $('.load-more').replaceWith($(text).find('.list-articles').html());
+                        $.getScript("//alimsvi.disqus.com/count.js");
                     },
                     error: function() {
                         $('.load-more').removeClass('bg-success');
