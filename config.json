@@ -1,16 +1,33 @@
 {
   "locals": {
-    "url": "http://localhost:8080",
+    "url": "http://localhost:3000",
     "name": "داده‌های خام",
     "owner": "Ali Mousavi",
-    "description": "در تکاپوی پردازش جرعه‌ای از این جام پُر داده"
+    "description": "در تکاپوی پردازش جرعه‌ای از این جام پُر داده",
+    "disqusID": "alimsvi",
+    "socialMedia" : [
+        {
+            "name": "github",
+            "href": "https://github.com/tuxitop/alimsvi.ir",
+            "icon": "fa-github"
+        },
+        {
+            "name": "twitter",
+            "href": "https://twitter.com/tuxitop",
+            "icon": "fa-twitter"
+        }
+    ],
+    "navbar": {
+      "آرشیو": "/archive.html"
+    }
   },
   "plugins": [
     "./plugins/paginator.coffee",
-    "wintersmith-livereload"
+    "wintersmith-livereload",
+    "wintersmith-tag"
   ],
   "require": {
-    "moment": "moment",
+    "moment": "moment-jalaali",
     "_": "underscore",
     "typogr": "typogr"
   },

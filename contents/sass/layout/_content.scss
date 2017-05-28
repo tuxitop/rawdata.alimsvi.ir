@@ -1,0 +1,43 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+.article {
+    margin: 20px 0;
+
+    &:not(:last-child) {
+        border-bottom: 1px dashed $mid-grey;
+    }
+
+    img {
+        max-width: 80%;
+        height: auto;
+        margin: 0 auto;
+        display: block;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .meta-sidebar {
+        padding-top: 30px;
+    }
+}
+
+.meta {
+    color: $mid-grey;
+
+    span {
+        padding-left: 5px;
+    }
+
+    .tags ul {
+        list-style: none;
+        float: left;
+        width: 87%;
+        padding-right: 0;
+    }
+
+    a:not(:last-child)::after {
+        content: '، ';
+    }
+}

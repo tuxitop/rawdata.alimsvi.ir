@@ -1,0 +1,25 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the coding.
+// -----------------------------------------------------------------------------
+code {
+    font-family: $code-font-stack;
+    color: rgb(77, 77, 77);
+}
+
+pre code {
+    display: block;
+    font-size: 0.85em;
+    direction: ltr;
+    background-color: lighten($light-grey, 10%);
+    line-height: 1.5;
+    color: rgb(77, 77, 77);
+    padding: 10px;
+}
+
+p code {
+    padding: 0.1em 0.3em 0.2em;
+    border-radius: 0.3em;
+    position: relative;
+    background-color: darken($light-grey, 5%);
+    white-space: nowrap;
+}

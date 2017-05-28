@@ -1,0 +1,22 @@
+/**
+ * Basic typography style for copy text
+ */
+body {
+    color: $text-color;
+    font: normal 1.8em / 1.6 $text-font-stack;
+    background-color: $light-grey;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $header-font-stack;
+}
+
+.meta,
+.copyright {
+    font-size: 0.8em;
+}

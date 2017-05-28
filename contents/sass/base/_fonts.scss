@@ -1,0 +1,40 @@
+// -----------------------------------------------------------------------------
+// This file contains all @font-face declarations, if any.
+// -----------------------------------------------------------------------------
+@font-face {
+    font-family: Vazir;
+    src: url('./fonts/Vazir.eot');
+    src: url('./fonts/Vazir.eot?#iefix') format('embedded-opentype'),
+         url('./fonts/Vazir.woff') format('woff'),
+         url('./fonts/Vazir.ttf') format('truetype');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: Vazir;
+    src: url('./fonts/Vazir-Bold.eot');
+    src: url('./fonts/Vazir-Bold.eot?#iefix') format('embedded-opentype'),
+         url('./fonts/Vazir-Bold.woff') format('woff'),
+         url('./fonts/Vazir-Bold.ttf') format('truetype');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: Vazir;
+    src: url('./fonts/Vazir-Light.eot');
+    src: url('./fonts/Vazir-Light.eot?#iefix') format('embedded-opentype'),
+         url('./fonts/Vazir-Light.woff') format('woff'),
+         url('./fonts/Vazir-Light.ttf') format('truetype');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Droid Arabic Naskh Bold';
+    font-style: normal;
+    font-weight: 700;
+    src: url('./fonts/DroidNaskh-Bold.eot');
+    src: url('./fonts/DroidNaskh-Bold.eot?#iefix') format('embedded-opentype'),
+          /*url('../fonts/DroidNaskh-Bold.woff2') format('woff2'),*/
+         url('./fonts/DroidNaskh-Bold.woff') format('woff'),
+         url('./fonts/DroidNaskh-Bold.ttf') format('truetype');
+}
