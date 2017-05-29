@@ -28,7 +28,7 @@ $(document).ready(function() {
                     success : function(text){
                         var article = $(text).find('.list-articles').html()
                         $('.load-more').replaceWith(article);
-                        // $.getScript("//alimsvi.disqus.com/count.js");
+                        $.getScript("//alimsvi.disqus.com/count.js");
                     },
                     error: function() {
                         $('.load-more').removeClass('bg-success');
