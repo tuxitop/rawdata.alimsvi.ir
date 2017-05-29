@@ -26,9 +26,9 @@ $(document).ready(function() {
                 var nextHref = $(".next-page").attr('href')
                 $.ajax({ type: "GET", url: nextHref, async: false,
                     success : function(text){
-                        article = $(text).find('.list-articles').html() // + '<script id="dsq-count-scr" src="//alimsvi.disqus.com/count.js" async></script>"';
+                        var article = $(text).find('.list-articles').html()
                         $('.load-more').replaceWith(article);
-                        $.getScript("//alimsvi.disqus.com/count.js");
+                        // $.getScript("//alimsvi.disqus.com/count.js");
                     },
                     error: function() {
                         $('.load-more').removeClass('bg-success');

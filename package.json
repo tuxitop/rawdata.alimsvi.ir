@@ -3,7 +3,9 @@
     "moment-jalaali": "^0.6.1",
     "typogr": "0.6.x",
     "underscore": "1.8.x",
+    "wintersmith-contents": "^0.6.0",
     "wintersmith-livereload": "^0.2.2",
+    "wintersmith-robots": "^0.2.6",
     "wintersmith-tag": "^1.0.2"
   },
   "private": "true",
