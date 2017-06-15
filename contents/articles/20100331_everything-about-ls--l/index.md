@@ -12,7 +12,6 @@ template: article.jade
 
 <span class="more"></span>
 
-
 ```bash
 drwxr-xr-x.  3 root root    4096 2010-01-02 12:55 alsa
 drwxr-xr-x.  2 root root    4096 2009-11-09 22:42 bdevid
