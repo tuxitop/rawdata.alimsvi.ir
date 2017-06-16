@@ -15,7 +15,7 @@ rss(version='2.0',
     language fa
     each article in articles
       - var permalink = locals.url + article.url;
-      - var content = '<div dir="rtl">' + article.getHtml(locals.url).replace("<pre>", '<pre dir="rtl" style="text-align: left;">') + "</div>"
+      - var content = '<div dir="rtl">' + article.getHtml(locals.url).replace(/<pre>/g, '<pre dir="ltr" style="text-align: left;">') + "</div>"
       item
         title= article.title
         link= permalink
