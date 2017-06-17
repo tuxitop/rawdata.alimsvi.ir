@@ -18,6 +18,11 @@
         "name": "twitter",
         "href": "https://twitter.com/tuxitop",
         "icon": "fa-twitter"
+      },
+      {
+        "name": "rss",
+        "href": "/feed.xml",
+        "icon": "fa-rss"
       }
     ],
     "navbar": {

@@ -45,9 +45,7 @@ html(lang="en")
                                     li(class=( (activePath == href) ? 'active' : ''))
                                         a(href=href)= name
         
-        div.container.body-container
-            .list-articles
-                block content
+        block content
         
         footer.page-footer
             .container
