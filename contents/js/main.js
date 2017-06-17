@@ -1,3 +1,5 @@
+var processingAjax = false
+
 $(document).ready(function() {
     // fix navbar to top
     $(document).scroll(function() {
@@ -20,15 +22,21 @@ $(document).ready(function() {
         }
 
         // load next page
+        if (processingAjax) {
+            return false;
+        }
+
         if ($(".load-more").length > 0) {
             var topDistMore = $(".load-more").position().top - $(".load-more").outerHeight();
             if ($(window).scrollTop() + $(window).height() > topDistMore) {
+                processingAjax = true;
                 var nextHref = $(".next-page").attr('href')
                 $.ajax({ type: "GET", url: nextHref, async: false,
                     success : function(text){
                         var article = $(text).find('.list-articles').html()
                         $('.load-more').replaceWith(article);
                         $.getScript("//alimsvi.disqus.com/count.js");
+                        processingAjax = false;
                     },
                     error: function() {
                         $('.load-more').removeClass('bg-success');
