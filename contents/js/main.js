@@ -31,7 +31,7 @@ $(document).ready(function() {
             if ($(window).scrollTop() + $(window).height() > topDistMore) {
                 processingAjax = true;
                 var nextHref = $(".next-page").attr('href')
-                $.ajax({ type: "GET", url: nextHref, async: false,
+                $.ajax({ type: "GET", url: nextHref,
                     success : function(text){
                         var article = $(text).find('.list-articles').html()
                         $('.load-more').replaceWith(article);
