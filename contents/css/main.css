@@ -14316,12 +14316,12 @@ html {
  * Basic styles for links
  */
 a {
-  color: #3e9352;
+  color: #5f3f78;
   text-decoration: none;
 }
 a:hover, a:active, a:focus {
   text-shadow: 2px 4px 6px #999999;
-  color: #2f6f3e;
+  color: #452d57;
   text-decoration: none;
 }
 
@@ -14467,7 +14467,7 @@ header nav {
   margin-top: -25px;
 }
 header nav .container {
-  background-color: #3e9352;
+  background-color: #5f3f78;
   border-radius: 5px 5px 0 0;
 }
 header nav .icon-bar {
