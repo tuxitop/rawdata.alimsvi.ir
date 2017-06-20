@@ -34,3 +34,7 @@ a {
         text-decoration: none;
     }
 }
+
+.content a {
+    border-bottom: 1px dashed $brand-color;
+}
