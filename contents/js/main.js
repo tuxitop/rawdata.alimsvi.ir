@@ -51,4 +51,27 @@ $(document).ready(function() {
     // run colorbox to have image lightbox
     $('article img').parent("a").addClass("image-link").css({"width": "80%"})
     $('a.image-link:not(.islink)').colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});
+
+    // The subscribe to email popup
+    $('.toggle-large').removeClass("fa-chevron-right");
+    $('.toggle-large').addClass("fa-chevron-left");
+    $('.toggle-small > .fa').removeClass("fa-chevron-up");
+    $('.toggle-small > .fa').addClass("fa-chevron-down");
+    $('.popup').addClass("popup-expanded");
+
+    $('.toggle').on("click", function() {
+        if ($('.popup').hasClass("popup-expanded")) {
+            $('.popup').removeClass('popup-expanded');
+            $('.toggle-large').removeClass("fa-chevron-left");
+            $('.toggle-large').addClass("fa-chevron-right");
+            $('.toggle-small > .fa').removeClass("fa-chevron-down");
+            $('.toggle-small > .fa').addClass("fa-chevron-up");
+        } else {
+            $('.popup').addClass("popup-expanded");
+            $('.toggle-large').removeClass("fa-chevron-right");
+            $('.toggle-large').addClass("fa-chevron-left");
+            $('.toggle-small > .fa').removeClass("fa-chevron-up");
+            $('.toggle-small > .fa').addClass("fa-chevron-down");
+        }
+    });
 });

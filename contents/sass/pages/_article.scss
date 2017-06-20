@@ -4,26 +4,6 @@
     border-radius: 5px;
 }
 
-#mc_embed_signup{
-    clear: left;
-
-    .mc-field-group {
-        width: 100% !important;
-    }
-
-    form {
-        text-align: right !important;
-    }
-
-    #mc-embedded-subscribe-form div.mce_inline_error {
-        margin: 2px 0 0 !important;
-    }
-
-    input[type=email] {
-        direction: ltr;
-    }
-}
-
 #disqus_thread {
     padding: 20px 0;
 }

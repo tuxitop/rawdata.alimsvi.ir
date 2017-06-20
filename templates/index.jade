@@ -50,7 +50,14 @@ block content
                     p.text-center در حال بارگزاری مقالات بیشتر...
                     .hidden
                         a.next-page(href=locals.url + nextPage.url) صفحه بعد
-        
+    
+    .popup
+        .toggle.toggle-small.visible-xs
+            .fa.fa-chevron-up
+        .subscribe
+            include subscribe-embeded
+        .toggle.toggle-large.fa.fa-chevron-right.hidden-xs
+    
 block append javascripts
     each article in articles
         if article.metadata.mathjax
