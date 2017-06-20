@@ -14644,6 +14644,13 @@ p code {
     box-shadow: none;
     border-radius: 0;
   }
+  .popup .button {
+    width: 35% !important;
+    padding: 10px !important;
+    white-space: normal !important;
+    height: auto !important;
+    line-height: 15px !important;
+  }
 
   .popup-expanded {
     left: 0;
