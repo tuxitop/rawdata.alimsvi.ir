@@ -30,7 +30,13 @@ $text-color: rgb(34, 34, 34) !default;
 /// @type Color
 // $brand-color: rgb(62, 147, 82) !default;
 // $brand-color: rgb(95, 63, 120) !default;
-$brand-color: lighten(rgb(40, 8, 26),15%) !default;
+$brand-color: rgb(101, 78, 163) !default;
+
+/// Header Background
+$header-bg-color: rgb(45, 44, 77) !default;
+
+/// Post background
+$post-bg-color: rgb(238, 234, 227) !default;
 
 /// Light grey
 /// @type Color

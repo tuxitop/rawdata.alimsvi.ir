@@ -7,6 +7,14 @@ body {
     background-color: $light-grey;
 }
 
+.article header a {
+    color: $header-bg-color;
+
+    &:hover {
+      color: darken($header-bg-color, 10%);
+    }
+}
+
 h1,
 h2,
 h3,
