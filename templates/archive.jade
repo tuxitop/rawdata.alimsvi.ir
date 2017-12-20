@@ -16,13 +16,13 @@ block content
     -     archives[archive] = _.groupBy(archives[archive], function(item) { return moment.utc(item.date).jMonth(); });
     - }
     - var month_names = ['فروردین', 'اردی‌بهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند']
-    section.archives
+    div.container.body-container.archives
         h2 آرشیو
         - var yearsK = _.chain(archives).keys().reverse().value();
         each yearK in yearsK
             - var months = archives[yearK];
             - var monthsK = _.chain(months).keys().reverse().value();
-            .row
+            .row.yearly
                 .col-sm-2.col-xs-12.year-label سال #{yearK}:
                 .col-sm-10.col-xs-12
                     each monthK in monthsK

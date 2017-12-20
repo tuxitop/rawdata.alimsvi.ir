@@ -1,6 +1,15 @@
 .archives {
+    .yearly {
+        padding-bottom: 10px;
+        padding-top: 10px;
+    }
+
+    .yearly:not(:last-child) {
+        border-bottom: 2px solid #d2d2d2;
+    }
+
     .monthly:not(:last-child) {
-        border-bottom: 1px solid #d2d2d2;
+        border-bottom: 1px dotted #d2d2d2;
         padding-bottom: 5px;
     }
 }
