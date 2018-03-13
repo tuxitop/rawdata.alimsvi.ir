@@ -1,64 +1,64 @@
 extends layout
 
 block vars
-    - var bodyClass = "index-page"
+  - var bodyClass = "index-page"
 
 block content
-    div.container.body-container
-        .list-articles
-            each article in articles
-                article.article.intro
-                    .row
-                        .col-md-2.hidden-xs.hidden-sm.meta.meta-sidebar
-                            .data.text-muted
-                                span.fa.fa-calendar
-                                span= moment.utc(article.date).format('jDD jMMMM jYYYY')
-                            .comments.text-muted
-                                span.fa.fa-comment 
-                                a(href=article.url + '#disqus_thread') دیدگاه‌ها
-                            .tags.text-muted
-                                span.fa.fa-tag
-                                - var tags = env.helpers.getTagsFromArticle(article)
-                                ul
-                                    each tag in tags
-                                        li
-                                            a.big-tag(href=env.helpers.getTagHome(tag).url)= tag
-                        .col-md-8.col-sm-12(role="main")
-                            header
-                                h2
-                                    a(href=article.url)= article.title
-                                .meta.hidden-md.hidden-lg.text-muted
-                                    .tags
-                                        span.fa.fa-tag
-                                        - var tags = env.helpers.getTagsFromArticle(article)
-                                        each tag in tags
-                                            a.big-tag(href=env.helpers.getTagHome(tag).url)= tag
-                                    span.fa.fa-calendar
-                                    span= moment.utc(article.date).format('jDD jMMMM jYYYY')
-                                    span.seperator -
-                                    span.fa.fa-comment 
-                                    a(href=article.url + '#disqus_thread') دیدگاه‌ها
-                            .section.content
-                                if article.intro.length > 0
-                                    != typogr(article.intro).typogrify()
-                                if article.hasMore
-                                    p.more
-                                        a(href=article.url) ادامه مطلب...
-    
-            if nextPage
-                .load-more.bg-success
-                    p.text-center در حال بارگزاری مقالات بیشتر...
-                    .hidden
-                        a.next-page(href=locals.url + nextPage.url) صفحه بعد
-    
-    .popup
-        .toggle.toggle-small.visible-xs
-            .fa.fa-chevron-up
-        .subscribe
-            include subscribe-embeded
-        .toggle.toggle-large.fa.fa-chevron-right.hidden-xs
-    
+  div.container.body-container
+    .list-articles
+      each article in articles
+        - var tags = env.helpers.getTagsFromArticle(article)
+        article.article.intro
+          .row
+            .col-md-2.hidden-xs.hidden-sm.meta.meta-sidebar
+              .data.text-muted
+                span.fa.fa-calendar
+                span= moment.utc(article.date).format('jDD jMMMM jYYYY')
+              .comments.text-muted
+                span.fa.fa-comment 
+                a(href=article.url + '#disqus_thread') دیدگاه‌ها
+              .tags.text-muted
+                span.fa.fa-tag
+                ul
+                  each tag in tags
+                    li
+                      a.big-tag(href=env.helpers.getTagHome(tag).url)= tag
+            .col-md-8.col-sm-12(role="main")
+              header
+                h2
+                  a(href=article.url)= article.title
+                .meta.hidden-md.hidden-lg.text-muted
+                  .tags
+                    span.fa.fa-tag
+                    - var tags = env.helpers.getTagsFromArticle(article)
+                    each tag in tags
+                      a.big-tag(href=env.helpers.getTagHome(tag).url)= tag
+                  span.fa.fa-calendar
+                  span= moment.utc(article.date).format('jDD jMMMM jYYYY')
+                  span.seperator -
+                  span.fa.fa-comment 
+                  a(href=article.url + '#disqus_thread') دیدگاه‌ها
+              .section.content
+                if article.intro.length > 0
+                  != typogr(article.intro).typogrify()
+                if article.hasMore
+                  p.more
+                    a(href=article.url) ادامه مطلب...
+
+      if nextPage
+        .load-more.bg-success
+          p.text-center در حال بارگزاری مقالات بیشتر...
+          .hidden
+            a.next-page(href=locals.url + nextPage.url) صفحه بعد
+
+  .popup
+    .toggle.toggle-small.visible-xs
+      .fa.fa-chevron-up
+    .subscribe
+      include subscribe-embeded
+    .toggle.toggle-large.fa.fa-chevron-right.hidden-xs
+
 block append javascripts
-    each article in articles
-        if article.metadata.mathjax
-            include mathjax
+  each article in articles
+    if article.metadata.mathjax
+      include mathjax

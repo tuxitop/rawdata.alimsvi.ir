@@ -11,7 +11,7 @@ body {
     color: $header-bg-color;
 
     &:hover {
-      color: darken($header-bg-color, 10%);
+        color: darken($header-bg-color, 10%);
     }
 }
 

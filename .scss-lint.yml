@@ -83,7 +83,7 @@ linters:
     enabled: true
     allow_non_nested_indentation: true
     character: space
-    width: 4
+    width: 2
 
   LeadingZero:
     enabled: true

@@ -31,7 +31,7 @@ const dirs = {
 gulp.task('clean', () => {
     return del([
         dirs.build,
-        dirs.content + "css/main.css"
+        dirs.content + 'css/main.css'
     ]);
 });
 
@@ -43,14 +43,14 @@ gulp.task('compass', () => {
             css: 'css',
             sass: 'sass'
         }))
-        .pipe(gulp.dest("css"));
+        .pipe(gulp.dest('css'));
 });
 
 // minify CSS files
 gulp.task('minify-css', () => {
-    return gulp.src(dirs.contents + "/css/main.css")
+    return gulp.src(dirs.contents + '/css/main.css')
         .pipe(cleanCSS())
-        .pipe(gulp.dest(dirs.contents + "/css"));
+        .pipe(gulp.dest(dirs.contents + '/css'));
 });
 
 gulp.task('create-production-config', function() {
@@ -60,7 +60,7 @@ gulp.task('create-production-config', function() {
         .pipe(gulp.dest('./'));
 
     gutil.log('Setting production config for Wintersmith\'s use');
-   runWintersmith.settings.configFile = 'config.production.json';
+    runWintersmith.settings.configFile = 'config.production.json';
 
 });
 
