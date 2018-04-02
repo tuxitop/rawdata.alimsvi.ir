@@ -6,7 +6,6 @@
     "description": "در تکاپوی پردازش جرعه‌ای از این جام پُر داده",
     "disqusID": "alimsvi",
     "sitemap": "sitemap.xml",
-    "noindex": "false",
     "environment": "development",
     "socialMedia": [
       {
@@ -26,7 +25,7 @@
       }
     ],
     "navbar": {
-      "حیاط پشتی": "http://backyard.alimsvi.ir",
+      "حیاط پشتی": "https://backyard.alimsvi.ir",
       "آرشیو": "/archive.html"
     }
   },
@@ -35,7 +34,9 @@
     "wintersmith-livereload",
     "wintersmith-tag",
     "wintersmith-contents",
-    "wintersmith-robots"
+    "wintersmith-sitemap",
+    "wintersmith-robots",
+    "./plugins/wintersmith-markdown-it/index.coffee"
   ],
   "require": {
     "moment": "moment-jalaali",
@@ -45,9 +46,13 @@
   "jade": {
     "pretty": true
   },
-  "markdown": {
-    "smartLists": true,
-    "smartypants": true
+  "markdown-it": {
+    "settings": {
+      "html": true,
+      "linkify": true
+    },
+    "markdown-it-block-embed": {},
+    "markdown-it-center-text": {}
   },
   "paginator": {
     "perPage": 3
