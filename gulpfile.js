@@ -17,7 +17,6 @@ const extend = require('gulp-extend');
 // other
 const del = require('del');
 const bourbon = require('bourbon');
-const path = require('path');
 
 // Directories
 const dirs = {

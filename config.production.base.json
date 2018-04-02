@@ -1,5 +1,5 @@
 {
-  "output": "./build",
+  "output": "./dist",
   "locals": {
     "url": "http://rawdata.alimsvi.ir",
     "environment": "production"
