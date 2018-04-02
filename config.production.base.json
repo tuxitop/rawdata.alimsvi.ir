@@ -1,7 +1,7 @@
 {
   "output": "./dist",
   "locals": {
-    "url": "http://rawdata.alimsvi.ir",
+    "url": "https://rawdata.alimsvi.ir",
     "environment": "production"
   }
 }
