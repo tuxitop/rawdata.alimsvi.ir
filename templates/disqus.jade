@@ -1,11 +1,13 @@
 #disqus_thread
-| <script type="text/javascript">
-| var disqus_shortname = '#{locals.disqusID}';
-| (function() {
-|    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-|    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-|    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-| })();
-| </script>
-| <noscript>لطفا برای مشاهدهٔ <a href="http://disqus.com/?ref_noscript">دیدگاه‌ها جاوااسکریپت را فعال کنید.</a></noscript>
-| <a href="http://disqus.com" class="dsq-brlink">دیدگاه‌ها قدرت گرفته از: <span class="logo-disqus">Disqus</span>.</a>
+  script(type="text/javascript").
+    var disqus_shortname = '#{locals.disqusID}';
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  noscript لطفا برای مشاهدهٔ دیدگاه‌ها
+    a(href="//disqus.com/?ref_noscript") جاوااسکریپت را فعال کنید.
+  a(href="//disqus.com" class="dsq-brlink") دیدگاه‌ها قدرت گرفته از: 
+    span.logo-disqus Disqus
+
