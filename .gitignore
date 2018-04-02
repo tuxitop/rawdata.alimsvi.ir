@@ -63,6 +63,7 @@ typings/
 
 # wintersmith
 build/
+dist/
 .publish/
 config.production.json
 CNAME

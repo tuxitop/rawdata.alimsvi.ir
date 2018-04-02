@@ -7,27 +7,52 @@
 /// @param {Bool} $self [false] - Whether or not to include current selector
 /// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
 @mixin on-event($self: false) {
-    @if $self {
-        &,
-        &:hover,
-        &:active,
-        &:focus {
-            @content;
-      }
-    } @else {
-        &:hover,
-        &:active,
-        &:focus {
-            @content;
-        }
+  @if $self {
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
     }
+  } @else {
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  }
 }
 
 /// Make a context based selector a little more friendly
 /// @author Hugo Giraudel
 /// @param {String} $context
 @mixin when-inside($context) {
-    #{$context} & {
-        @content;
-    }
+  #{$context} & {
+    @content;
+  }
 }
+
+/// Some mixins for compass compatibility
+@mixin text-shadow($shadow...) {
+  $shadow: if(length($shadow) > 0, $shadow, default);
+  $default: -compass-space-list(compact(0 0 1 false #aaa));
+  $shadows-without-spread: join((), (), comma);
+  $shadows: join((), (), comma);
+  $has-spread: false;
+  @each $layer in $shadow {
+    $layer: if($layer == "default", $default, $layer);
+    @if length($layer) > 4 {
+      $has-spread: true;
+      $shadows-without-spread: append($shadows-without-spread, nth($layer, 1) nth($layer, 2) nth($layer, 3) nth($layer, 5));
+      $shadows: append($shadows, $layer);
+    } @else {
+      $shadows-without-spread: append($shadows-without-spread, $layer);
+      $shadows: append($shadows, $layer);
+    }
+  }
+  @if $has-spread {
+    text-shadow: $shadows-without-spread;
+  }
+  text-shadow: $shadows;
+}
+

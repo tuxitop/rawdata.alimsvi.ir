@@ -38,6 +38,7 @@
     "wintersmith-robots",
     "./plugins/wintersmith-markdown-it/index.coffee"
   ],
+  "output": "./dist",
   "require": {
     "moment": "moment-jalaali",
     "_": "underscore",
