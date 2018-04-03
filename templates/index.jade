@@ -2,6 +2,12 @@ extends layout
 
 block vars
   - var bodyClass = "index-page"
+  - var mathjas = "false"
+  //- load mathjax if required.
+  each article in articles
+    if article.metadata.mathjax
+      - mathjax = true
+      - break
 
 block content
   div.container.body-container
@@ -11,12 +17,24 @@ block content
         article.article.intro
           .row
             .col-md-2.hidden-xs.hidden-sm.meta.meta-sidebar
-              .data.text-muted
-                span.fa.fa-calendar
-                span= moment.utc(article.date).format('jDD jMMMM jYYYY')
+              .date.text-muted
+                i.fa.fa-calendar
+                span(itemprop="datePublished" content="#{article.date.getFullYear()}-#{('0' + (article.date.getMonth()+1)).slice(-2)}-#{('0' + article.date.getDate()).slice(-2)}")
+                  = moment.utc(article.date).format('jDD jMMMM jYYYY')
+              .read-time.text-muted
+                i.fa.fa-clock-o
+                span!= Math.ceil(article.html.replace(/<(?:.|\n)*?>/gm, '').split(' ').length / 275) + ' دقیقه مطالعه'
               .comments.text-muted
-                span.fa.fa-comment 
-                a(href=article.url + '#disqus_thread') دیدگاه‌ها
+                i.fa.fa-comment 
+                if locals.commentingSystem == "disqus"
+                  a(href='#disqus_thread') نظر دهید
+                else if locals.commentingSystem == "staticman"
+                  - var postID = article.getFilename().split("/").slice(-2)[0]
+                  - var postComments = contents.comments ? contents.comments[postID] : null
+                  if postComments
+                    a(href='#{article.getUrl(locals.url)}#comments') #{Object.keys(postComments).length} دیدگاه
+                  else
+                    a(href='#{article.getUrl(locals.url)}#comment-form') نظر دهید
               .tags.text-muted
                 span.fa.fa-tag
                 ul
@@ -26,7 +44,8 @@ block content
             .col-md-8.col-sm-12(role="main")
               header
                 h2
-                  a(href=article.url)= article.title
+                  a(href=article.url)
+                    span= article.title
                 .meta.hidden-md.hidden-lg.text-muted
                   .tags
                     span.fa.fa-tag
@@ -34,10 +53,22 @@ block content
                     each tag in tags
                       a.big-tag(href=env.helpers.getTagHome(tag).url)= tag
                   span.fa.fa-calendar
-                  span= moment.utc(article.date).format('jDD jMMMM jYYYY')
+                  span
+                    = moment.utc(article.date).format('jDD jMMMM jYYYY')
                   span.seperator -
-                  span.fa.fa-comment 
-                  a(href=article.url + '#disqus_thread') دیدگاه‌ها
+                  i.fa.fa-clock-o
+                  span!= Math.ceil(article.html.replace(/<(?:.|\n)*?>/gm, '').split(' ').length / 275) + ' دقیقه مطالعه'
+                  .comments
+                    i.fa.fa-comment 
+                    if locals.commentingSystem == "disqus"
+                      a(href='#disqus_thread') نظر دهید
+                    else if locals.commentingSystem == "staticman"
+                      - var postID = article.getFilename().split("/").slice(-2)[0]
+                      - var postComments = contents.comments ? contents.comments[postID] : null
+                      if postComments
+                        a(href='#{article.getUrl(locals.url)}#comments') #{Object.keys(postComments).length} دیدگاه
+                      else
+                        a(href='#{article.getUrl(locals.url)}#comment-form') نظر دهید
               .section.content
                 if article.intro.length > 0
                   != typogr(article.intro).typogrify()
@@ -48,6 +79,8 @@ block content
       if nextPage
         .load-more.bg-success
           p.text-center در حال بارگزاری مقالات بیشتر...
+          .hidden.text-center#loadNextPageAJAXButton
+            button.btn.btn-primary(type="submit") تلاش دوباره
           .hidden
             a.next-page(href=locals.url + nextPage.url) صفحه بعد
 
@@ -59,6 +92,5 @@ block content
     .toggle.toggle-large.fa.fa-chevron-right.hidden-xs
 
 block append javascripts
-  each article in articles
-    if article.metadata.mathjax
-      include mathjax
+  if (locals.commentingSystem == "disqus")
+    script(id="dsq-count-scr" src="//mrwill.disqus.com/count.js" async)

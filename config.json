@@ -2,15 +2,21 @@
   "locals": {
     "url": "http://localhost:3000",
     "name": "داده‌های خام",
-    "owner": "Ali Mousavi",
+    "owner": "علی موسوی",
+    "owner_en": "Ali Mousavi",
     "description": "در تکاپوی پردازش جرعه‌ای از این جام پُر داده",
     "disqusID": "alimsvi",
+    "commentingSystem": "staticman",
+    "staticmanAPI": "https://api.staticman.net/v2/entry/tuxitop/rawdata.alimsvi.ir/master/comments",
+    "disqusID": "mrwill",
+    "recaptchaSiteKey": "6LdsDFAUAAAAAIzYBd79apO6k08uWmQHSPrs90Z-",
+    "recaptchaSecret": "0CbNri4TDKztXsq9O64bCgALqeHxnlC/AUP2FZfmxxYiOFO9VzFwyCxpZ5FViQd6sbv74Q6Xn+bun6nq/m3ezsBvT2TEiYTViDZptZ4dohzIU/7ofY/9q4utR4YsvJa0XIAhfRi//rY6Hbv48+tW0jCcft9jdDGJJmXoQOr7JxU=",
     "sitemap": "sitemap.xml",
     "environment": "development",
     "socialMedia": [
       {
         "name": "github",
-        "href": "https://github.com/tuxitop/alimsvi.ir",
+        "href": "https://github.com/tuxitop/rawdata.alimsvi.ir",
         "icon": "fa-github"
       },
       {
@@ -25,8 +31,8 @@
       }
     ],
     "navbar": {
-      "حیاط پشتی": "https://backyard.alimsvi.ir",
-      "آرشیو": "/archive.html"
+      "آرشیو": "/archive.html",
+      "حیاط پشتی": "https://backyard.alimsvi.ir"
     }
   },
   "plugins": [

@@ -2,6 +2,8 @@ extends layout
 
 block vars
   - var bodyClass = "article-page"
+  if page.metadata.mathjax
+    - var mathjax = true
 
 block title
   | #{page.title} | #{locals.name} | علی موسوی
@@ -13,45 +15,65 @@ block content
         .row
           .col-md-2.hidden-xs.hidden-sm.meta.meta-sidebar
             .date.text-muted
-              span.fa.fa-calendar
-              span= moment.utc(page.date).format('jDD jMMMM jYYYY')
+              i.fa.fa-calendar
+              span
+                = moment.utc(page.date).format('jDD jMMMM jYYYY')
+            .read-time.text-muted
+              i.fa.fa-clock-o
+              span!= Math.ceil(page.html.replace(/<(?:.|\n)*?>/gm, '').split(' ').length / 275) + ' دقیقه مطالعه'
             .comments.text-muted
-              span.fa.fa-comment
-              a(href='#disqus_thread') دیدگاه‌ها
-            .tags.text-muted
-              span.fa.fa-tag
-              - var tags = env.helpers.getTagsFromArticle(page)
-              ul
-                each tag in tags
-                  li
-                    a.big-tag(href=env.helpers.getTagHome(tag).url)= tag
+              i.fa.fa-comment
+              if locals.commentingSystem == "disqus"
+                a(href='#disqus_thread') نظر دهید
+              else if locals.commentingSystem == "staticman"
+                - var postID = page.getFilename().split("/").slice(-2)[0]
+                - var postComments = contents.comments ? contents.comments[postID] : null
+                if postComments
+                  a(href='#comments') #{Object.keys(postComments).length} دیدگاه
+                else
+                  a(href='#comment-form') نظر دهید
+              
           .col-md-8.col-sm-12(role="main")
             header
               h2
-                a(href=page.url)= page.title
+                a(href=page.url)
+                  = page.title
               .meta.hidden-md.hidden-lg.text-muted
                 .tags
                   span.fa.fa-tag
                   - var tags = env.helpers.getTagsFromArticle(page)
                   each tag in tags
                     a.big-tag(href=env.helpers.getTagHome(tag).url)= tag
-                span.fa.fa-calendar
-                span= moment.utc(page.date).format('jDD jMMMM jYYYY')
+                i.fa.fa-calendar
+                  = moment.utc(page.date).format('jDD jMMMM jYYYY')
                 span.seperator -
-                span.fa.fa-comment 
-                a(href='#disqus_thread') دیدگاه‌ها
-            section.content!= typogr(page.html).typogrify()
+                i.fa.fa-clock-o
+                span!= Math.ceil(page.html.replace(/<(?:.|\n)*?>/gm, '').split(' ').length / 275) + ' دقیقه مطالعه'
+                .comments
+                  i.fa.fa-comment
+                  if locals.commentingSystem == "disqus"
+                    a(href='#disqus_thread') نظر دهید
+                  else if locals.commentingSystem == "staticman"
+                    - var postID = page.getFilename().split("/").slice(-2)[0]
+                    - var postComments = contents.comments ? contents.comments[postID] : null
+                    if postComments
+                      a(href='#comments') #{Object.keys(postComments).length} دیدگاه
+                    else
+                      a(href='#comment-form') نظر دهید
+            section.content
+              != typogr(page.html).typogrify()
 
   .container.section-container.subscribe
     .row
       .col-md-offset-2.col-md-8
         include subscribe-embeded                
-
-  .container.section-container.comments
-    .row
-      .col-md-offset-2.col-md-8
-        include disqus
+  
+  
+  if (locals.commentingSystem == "disqus")
+    include disqus
+  else if (locals.commentingSystem == "staticman")
+    include staticman
 
 block append javascripts
-  if page.metadata.mathjax
-    include mathjax
+  if (locals.commentingSystem == "disqus")
+    script(id="dsq-count-scr" src="//mrwill.disqus.com/count.js" async)
