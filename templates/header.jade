@@ -1,0 +1,27 @@
+.container
+  .page-header
+    h1.title#website-title
+      a(href=locals.url)= locals.name
+    .subtitle: p= locals.description   
+.navbar
+  nav
+    .container
+      .navbar-header
+        button(type="button" class="navbar-toggle collapsed",
+          data-target="#rawdata-navbar" data-toggle="collapse" aria-expanded="false")
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+          
+      div.collapse.navbar-collapse#rawdata-navbar.text-center
+        .social-media
+          ul.nav.navbar-nav.navbar-right
+            li
+              each item in locals.socialMedia
+                span
+                  a(class='fa ' + item.icon href=item.href)
+        ul.nav.navbar-nav.navbar-right.menu
+          each href, name in locals.navbar
+            li(class=( (activePath == href) ? 'active' : ''))
+              a(href=href)= name

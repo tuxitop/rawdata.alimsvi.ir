@@ -1,0 +1,29 @@
+- var parentID = comment.metadata._id
+
+//- populate replies
+- var group = [comment]
+each comment in comments
+  if comment.metadata.reply_to === parentID
+    - group.push(comment)
+
+each comment in group
+  div(class="row comment comment-level-#{comment.metadata.reply_level}" id="comment-#{comment.metadata._id}")
+    .comment-header
+      img.comment-avatar(src="https://www.gravatar.com/avatar/#{comment.metadata.email}?s=64")
+      .post-comment-info
+        .post-comment-author 
+          if comment.metadata.url
+            strong
+              a(href="#{comment.metadata.url}") #{comment.metadata.name}
+          else
+            strong #{comment.metadata.name}
+        .post-comment-date
+          i.fa.fa-calendar
+          span= moment.utc(comment.date).format('jDD jMMMM jYYYY')
+    .post-comment-content
+      != typogr(comment.html).typogrify()
+  if comment.metadata.reply_level == 1
+    .comment-reply-button
+      a.btn.btn-info(href="#comment-form" onClick="handleReplyButton('#{comment.metadata._id}',#{comment.metadata.reply_level},'#{comment.metadata.name}')").
+        پاسخ به #{comment.metadata.name}
+  .clearfix

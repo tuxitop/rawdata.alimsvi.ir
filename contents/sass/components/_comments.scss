@@ -1,0 +1,79 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the embeded components.
+// -----------------------------------------------------------------------------
+
+.comment-header {
+  .comment-avatar {
+    border-radius: 50%;
+  }
+
+  .post-comment-info {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 20px;
+
+    .post-comment-date {
+      color: $mid-grey;
+    }
+
+    i {
+      margin-left: 5px;
+    }
+  }
+}
+
+.comment-list {
+  padding-bottom: 20px;
+}
+
+.post-comment-content {
+  margin-right: 84px;
+  background-color: $post-bg-color;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.comment-reply-button {
+  float: left;
+  margin: 10px;
+}
+
+.comment-level-1 {
+  margin-top: 15px;
+}
+
+.comment-level-2 {
+  margin-right: 64px;
+  border-right: $light-grey 4px solid;
+  padding-right: 5px;
+}
+
+.post-comment button {
+  float: left;
+  min-width: 100px;
+}
+
+@media (max-width: map-get($breakpoints, medium)) {
+  .post-comment-content {
+    margin: 5px 0;
+  }
+
+  .comment-level-2 {
+    margin-right: 20px;
+  }
+}
+
+.dialog {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  z-index: 10;
+
+  &:target {
+    display: block;
+  }
+}

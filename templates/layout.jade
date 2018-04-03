@@ -1,64 +1,43 @@
-- moment.loadPersian()
+- moment.loadPersian({usePersianDigits: true})
 block vars
-    - var bodyClass = null;
-    - var activePath = null;
+  - var bodyClass = null
+  - var activePath = null
+  - var mathjax = false
 doctype html
 html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        meta(name="description" content=locals.description)
-        meta(http-equiv="X-UA-Compatible", content="ie=edge")
-        | !{ livereloadScript  }
-        link(rel='alternate', title=locals.name, type='application/atom+xml', href=locals.url + '/feed.xml')
-        title: block title
-                | علی موسوی | #{locals.name}
-        link(rel='stylesheet', href=contents.css['main.css'].url)
-    body(class=bodyClass)
-        header.header
-            block header
-            .container
-                .page-header
-                    h1.title#website-title
-                        a(href=locals.url)= locals.name
-                    .subtitle: p= locals.description   
-            .navbar
-                nav
-                    .container
-                        .navbar-header
-                            button(type="button" class="navbar-toggle collapsed",
-                                data-target="#rawdata-navbar" data-toggle="collapse" aria-expanded="false")
-                                span.sr-only Toggle navigation
-                                span.icon-bar
-                                span.icon-bar
-                                span.icon-bar
-                            
-                        div.collapse.navbar-collapse#rawdata-navbar.text-center
-                            .social-media
-                                ul.nav.navbar-nav.navbar-right
-                                    li
-                                        each item in locals.socialMedia
-                                            span
-                                                a(class='fa ' + item.icon href=item.href)
-                            ul.nav.navbar-nav.navbar-right.menu
-                                each href, name in locals.navbar
-                                    li(class=( (activePath == href) ? 'active' : ''))
-                                        a(href=href)= name
-        
-        block content
-        
-        footer.page-footer
-            .container
-                block footer
-                .copyright.text-center
-                    p copyright &copy; #{ new Date().getFullYear() } #{ locals.owner }
-        
-        block javascripts
-            script(id="dsq-count-scr" src="//alimsvi.disqus.com/count.js" async)
-            script(src=contents.js['jquery-3.2.1.min.js'].url)
-            script(src=contents.js['bootstrap.min.js'].url)
-            
-            //- lightbox stuff
-            script(src=contents.js.colorbox['jquery.colorbox-min.js'].url)
-            script(src=contents.js.colorbox['jquery.colorbox-fa.js'].url)
-            script(src=contents.js['main.js'].url)
+  head
+    block head
+      meta(charset="UTF-8")
+      meta(name="viewport", content="width=device-width, initial-scale=1.0")
+      meta(name="description" content=locals.description)
+      meta(http-equiv="X-UA-Compatible", content="ie=edge")
+      | !{ livereloadScript  }
+      link(rel='alternate', title=locals.name, type='application/atom+xml', href=locals.url + '/feed.xml')
+      title: block title
+        | علی موسوی | #{locals.name}
+      link(rel='stylesheet', href=contents.css['main.css'].url)
+  body(class=bodyClass)
+    header.header
+      block header
+        include header
+
+    block content
+
+    footer.page-footer
+      .container
+        block footer
+        .copyright.text-center
+          p copyright &copy; #{ new Date().getFullYear() } #{ locals.owner_en }
+
+    block javascripts
+      script(src=contents.js['jquery-3.2.1.min.js'].url)
+      script(src=contents.js['bootstrap.min.js'].url)
+      script#mainJS(data-commenting='#{locals.commentingSystem}' data-disqusID='#{locals.disqusID}' src=contents.js['main.js'].url)
+      
+      //- load mathjax only if required  
+      if mathjax
+        include mathjax
+      
+      //- lightbox stuff
+      script(src=contents.js.colorbox['jquery.colorbox-min.js'].url)
+      script(src=contents.js.colorbox['jquery.colorbox-fa.js'].url)

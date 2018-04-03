@@ -1,0 +1,13 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the embeded components.
+// -----------------------------------------------------------------------------
+
+.block-embed-service-youtube {
+  overflow: hidden;
+  position: relative;
+
+  iframe {
+    height: 100%;
+    width: 100%;
+  }
+}

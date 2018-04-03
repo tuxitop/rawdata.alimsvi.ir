@@ -1,0 +1,77 @@
+- var postID = page.getFilename().split("/").slice(-2)[0]
+- var comments = contents.comments ? contents.comments[postID] : null
+
+if comments
+  .container.section-container.comments#comments
+    .row
+      .col-md-offset-2.col-md-8
+        .container.comment-list
+          h2 #{Object.keys(comments).length} دیدگاه:
+          each comment in comments
+            if (comment.metadata.reply_level == 1)
+              include comment-group
+  
+.container.section-container.comment-form#comment-form
+  .row
+    .col-md-offset-2.col-md-8
+      h3#comment-form-title.comment.form.title یک دیدگاه تازه بگذارید
+      
+      form.post-comment(method="POST" action="#{locals.staticmanAPI}")
+        input(type="hidden" name="options[slug]" value=postID autocomplete="off")
+        input(type="hidden" name="options[postID]" value=postID autocomplete="off")
+        input(type="hidden" name="options[redirect]" value="#{page.getUrl(locals.url) }#post-submitted" autocomplete="off")
+        input(type="hidden" name="options[redirectError]" value="#{page.getUrl(locals.url)}#post-failed" autocomplete="off")
+        input(type="hidden" name="options[reCaptcha][siteKey]" value="#{locals.recaptchaSiteKey}" autocomplete="off")
+        input(type="hidden" name="options[reCaptcha][secret]" value="#{locals.recaptchaSecret}" autocomplete="off")
+        input#reply-to(type="hidden" name="fields[reply_to]" value="" autocomplete="off")
+        input#reply-level(type="hidden" name="fields[reply_level]" value="1" autocomplete="off")
+        
+        fieldset.form-group
+          label.sr-only(for="fields[name]") Content
+          textarea.form-control(type='text' name='fields[content]' rows="6" placeholder='دیدگاه خود را بگذارید. (می‌توانید از Markdown نیز استفاده کنید.)' required)
+        
+        fieldset.form-group
+          label.sr-only(for="fields[name]") Name
+          .input-group
+            .input-group-addon
+              i.fa.fa-user
+            input.form-control(type="text" name='fields[name]' placeholder='نام' required)
+        
+        fieldset.form-group
+          label.sr-only(for="fields[email]") Email
+          .input-group
+            .input-group-addon
+              i.fa.fa-envelope
+            input.form-control(type="text" name='fields[email]' placeholder='ایمیل (این ایمیل منتشر نخواهد شد.)' required)
+        
+        fieldset.form-group
+          label.sr-only(for="fields[url]") Website
+          .input-group
+            .input-group-addon
+              i.fa.fa-globe
+            input.form-control(type="text" name='fields[url]' placeholder='وبسایت')
+        
+        fieldset.form-group
+          .g-recaptcha(data-siteKey="#{locals.recaptchaSiteKey}" data-callback="enableCommentSubmit" data-expired-callback="disableCommentSubmit")
+
+        fieldset.form-group
+          button.btn.btn-default#comment-submit(type="submit" disabled autocomplete="off") ارسال
+
+      script(async src="https://www.google.com/recaptcha/api.js?hl=fa")
+      
+div#post-submitted.alert.alert-success.dialog
+  h3 متشکرم
+  p  پیام شما با موفقیت ارسال شد و پس از تایید منتشر خواهد شد.
+  if (locals.githubPullURL)
+    p.
+      برای مشاهده پیامی که ارسال کردید در گیت‌هاب 
+      a(href="#{locals.githubPullURL}") اینجا را کلیک کنید
+      
+  a.btn.btn-primary(href="#") تایید
+  </div>
+  
+div#post-failed.alert.alert-danger.dialog
+  h3 اوپس!
+  p  ارسال پیام با مشکل مواجه شد. لطفا دوباره امتحان کنید.
+  a.btn.btn-primary(href="#") تایید
+  </div>
