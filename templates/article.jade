@@ -20,7 +20,8 @@ block content
                 = moment.utc(page.date).format('jDD jMMMM jYYYY')
             .read-time.text-muted
               i.fa.fa-clock-o
-              span!= Math.ceil(page.html.replace(/<(?:.|\n)*?>/gm, '').split(' ').length / 275) + ' دقیقه مطالعه'
+              - var readTime = Math.ceil(page.html.replace(/<(?:.|\n)*?>/gm, '').split(' ').length / 275).toLocaleString('fa-IR')
+              span!= readTime + ' دقیقه مطالعه'
             .comments.text-muted
               i.fa.fa-comment
               if locals.commentingSystem == "disqus"
@@ -29,7 +30,7 @@ block content
                 - var postID = page.getFilename().split("/").slice(-2)[0]
                 - var postComments = contents.comments ? contents.comments[postID] : null
                 if postComments
-                  a(href='#comments') #{Object.keys(postComments).length} دیدگاه
+                  a(href='#comments') #{Object.keys(postComments).length.toLocaleString('fa-IR')} دیدگاه
                 else
                   a(href='#comment-form') نظر دهید
               
@@ -48,7 +49,8 @@ block content
                   = moment.utc(page.date).format('jDD jMMMM jYYYY')
                 span.seperator -
                 i.fa.fa-clock-o
-                span!= Math.ceil(page.html.replace(/<(?:.|\n)*?>/gm, '').split(' ').length / 275) + ' دقیقه مطالعه'
+                - var readTime = Math.ceil(page.html.replace(/<(?:.|\n)*?>/gm, '').split(' ').length / 275).toLocaleString('fa-IR')
+                span!= readTime + ' دقیقه مطالعه'
                 .comments
                   i.fa.fa-comment
                   if locals.commentingSystem == "disqus"
@@ -57,7 +59,7 @@ block content
                     - var postID = page.getFilename().split("/").slice(-2)[0]
                     - var postComments = contents.comments ? contents.comments[postID] : null
                     if postComments
-                      a(href='#comments') #{Object.keys(postComments).length} دیدگاه
+                      a(href='#comments') #{Object.keys(postComments).length.toLocaleString('fa-IR')} دیدگاه
                     else
                       a(href='#comment-form') نظر دهید
             section.content

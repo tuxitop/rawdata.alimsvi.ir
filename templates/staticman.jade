@@ -6,7 +6,7 @@ if comments
     .row
       .col-md-offset-2.col-md-8
         .container.comment-list
-          h2 #{Object.keys(comments).length} دیدگاه:
+          h2 #{Object.keys(comments).length.toLocaleString('fa-IR')} دیدگاه:
           each comment in comments
             if (comment.metadata.reply_level == 1)
               include comment-group
